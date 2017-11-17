@@ -32,7 +32,7 @@ function createBoard(size) {
 }
 
 function startGame () {
-  createBoard(4)
+  createBoard(6)
   //loop through contents of each cell and then call countSurroundingMines
   let cell = 0; //start counting from cell 0
   for (cell in board.cells) { //for every cell in the cells board
@@ -41,7 +41,7 @@ function startGame () {
   }
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
-  document.addEventListener('click', checkForWin) //no need to do cell[i].document.addEventListener like the last game because we're not counting the cells, just the document in general
+  document.addEventListener('click', checkForWin, document.getElementsByTagName('audio')[0]) //no need to do cell[i].document.addEventListener like the last game because we're not counting the cells, just the document in general
 }
 
 // Define this function to look for a win condition:
@@ -52,23 +52,21 @@ function checkForWin () {
 
   //for each cell, check conditions for winning:
   for (let cell in board.cells) {
-    if (board.cells[cell].isMine){ //it's a mine
-      if (board.cells[cell].isMarked === false) { //but it's not marked
-        return
+    if (board.cells[cell].isMine){ // if it's a mine
+      if (!(board.cells[cell].hidden)) { // but it's not marked
+        return;
       }
     }
-
     if (board.cells[cell].hidden) { //there's a hidden cell
-      if (board.cells[cell].isMine === false) { //which isn't a mine
-        return
-      }
+      if (!(board.cells[cell].isMine)) // which isn't a mine
+      return;
     }
-    playSound(true)
-      // if the cell is NOT a mine
-    // You can use this function call to declare a winner (once you've
-    // detected that they've won, that is!)
-    lib.displayMessage('You win! Your cats live for another day!')
   }
+
+// You can use this function call to declare a winner (once you've
+// detected that they've won, that is!)
+lib.displayMessage('You win! Your cats live for another day!');
+playSound(true);
 }
 
 // Define this function to count the number of mines around the cell
@@ -93,10 +91,10 @@ function countSurroundingMines (cell) {
 
 function playSound(hasWon) {
   if (hasWon) {
-    var audio = document.getElementsByTagName("audio")[0];
+    document.getElementsByTagName("audio")[0];
     audio.play();
   } else {
-    var audio = document.getElementsByTagName("audio")[1];
+    document.getElementsByTagName("audio")[1];
     audio.play();
   }
 
