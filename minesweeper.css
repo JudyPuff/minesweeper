@@ -8,6 +8,7 @@ body {
   align-items: center;
   justify-content: flex-center;
   flex-direction: column;
+  background-image: url('images/cats.jpeg');
 }
 
 #message, #notes {
@@ -44,7 +45,7 @@ body {
 }
 
 div.mine, div.mine:hover {
-  background: no-repeat center/60% url("images/bomb.svg") crimson;
+  background: no-repeat center/60% url("images/garethbomb.jpg");
 }
 
 div.hidden {
