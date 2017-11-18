@@ -41,7 +41,7 @@ function startGame () {
   }
   // Don't remove this function call: it makes the game work!
   lib.initBoard()
-  document.addEventListener('click', checkForWin, document.getElementsByTagName('audio')[0]) //no need to do cell[i].document.addEventListener like the last game because we're not counting the cells, just the document in general
+  document.addEventListener('click', checkForWin) //no need to do cell[i].document.addEventListener like the last game because we're not counting the cells, just the document in general
 }
 
 // Define this function to look for a win condition:
